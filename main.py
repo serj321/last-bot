@@ -2,6 +2,8 @@ import discord
 from dotenv import load_dotenv
 import os
 
+print("starting bot...")
+
 # load env variable to get the bot token
 load_dotenv()
 token = os.environ.get("TOKEN")
