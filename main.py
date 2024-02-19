@@ -1,6 +1,7 @@
 import discord
 from dotenv import load_dotenv
 import os
+import random
 
 print("starting bot...")
 
@@ -24,5 +25,14 @@ async def on_message(message):
 
     if message.content.startswith("$hello"):
         await message.channel.send("leave me the fuck alone")
+    
+    if message.content.startswith("$coin flip"):
+        rand_num = random.randint(0, 1)
+        if rand_num:
+            await message.channel.send("heads")
+        else:
+            await message.channel.send("tails")
+        
+
 
 client.run(token)
