@@ -4,7 +4,7 @@ import pytz
 from datetime import datetime
 
 all_timezones = pytz.all_timezones
-#print(all_timezones)
+print(all_timezones)
 
 print("Which timezone would you like to select?")
 keyboard_input = input()
@@ -21,7 +21,7 @@ print("Searching for", query)
 #    print(timezone)
 
 
-def normalize_and_search_timezones(querry):
+def normalize_and_search_timezones(query):
     normalized_query = query.lower().replace("_", " ")
     matching_timezones = [timezone for timezone in all_timezones 
                           if normalized_query in timezone.lower().replace("_", " ")]
