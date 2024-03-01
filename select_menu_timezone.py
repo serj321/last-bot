@@ -1,25 +1,6 @@
-import discord
-import os
-from dotenv import load_dotenv
-from discord.ext import commands
 from discord.ui import Select, View
-
-
-# load env variable to get the bot token
-load_dotenv()
-token = os.environ.get("TOKEN")
-
-# Define intents
-intents = discord.Intents.default()  # This enables the default intents, including guilds and messages
-intents.messages = True  # Enable the bot to receive messages
-# If your bot needs to track presence or member events, you might also need intents.presences = True or intents.members = True
-
-# Create a bot instance with intents
-bot = commands.Bot(command_prefix='!', intents=intents)
-
-@bot.event
-async def on_ready():
-    print("Bot is online")
+from discord.ext import commands
+import discord
 
 class MySelect(View):
 
@@ -44,11 +25,8 @@ class MySelect(View):
         if select.values[0] == "3":
             await interaction.response.edit_message(content="we edit")
         
-@bot.command()
+@client.command()
 async def menu(ctx):
     view = MySelect()
     await ctx.send("Hello", view=view)
 
-
-# Run the bot with your token
-bot.run(token)
